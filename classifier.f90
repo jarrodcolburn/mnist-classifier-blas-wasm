@@ -130,7 +130,7 @@ SUBROUTINE classifier(weights, image, classify)
     call DGEMV('T', 28 * 28, 512, 1.0d0, A, 28 * 28, image, 1, 1.0d0, Y, 1)
 
     A(1:512, 1:10) = weights(1:512, 1:10, 2)
-    Y = MAX(0, Y)
+    Y = MAX(0.0d0, Y)
     classify = weights(1:10, 1, 4)
     call DGEMV('T', 512, 10, 1.0d0, A, 28 * 28, Y, 1, 1.0d0, classify, 1)
 END
