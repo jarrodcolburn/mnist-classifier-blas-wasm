@@ -1,6 +1,6 @@
 SUBROUTINE classifier(weights, image, classify)
     IMPLICIT NONE
-    DOUBLE PRECISION, INTENT(IN) :: image(28 * 28), weights(28 * 28, 512, 8)
+    DOUBLE PRECISION, INTENT(IN) :: image(28 * 28), weights(28 * 28, 512, 4)
     DOUBLE PRECISION, INTENT(OUT) :: classify(10)
     DOUBLE PRECISION :: A(28 * 28, 512), Y(512)
     EXTERNAL :: DGEMV
