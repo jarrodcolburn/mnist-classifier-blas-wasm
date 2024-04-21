@@ -167,7 +167,7 @@ function doClassify() {
 
   // Call Wasm classifier and store results
   const out_ptr = Module._malloc(10);
-  Module._classifier_(weights_ptr, image_ptr, out_ptr);
+  Module._classifier(weights_ptr, image_ptr, out_ptr);
 
   // Draw results as a histogram
   const out_bytes = Module.HEAPF64.subarray(out_ptr / 8, out_ptr / 8 + 10);
