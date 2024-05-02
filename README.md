@@ -27,4 +27,4 @@ emcc --target=wasm32-unknown-emscripten -sSTACK_SIZE=50mb -sINITIAL_MEMORY=256mb
 
 Draw a digit from 0-9 in the box and the classifier will try to label the handwritten digit. The resulting relative probabilities will be shown in a plot on the right.
 
-https://shaikh-ubaid.github.io/mnist-classifier-blas-wasm/
+https://lfortran.github.io/mnist-classifier-blas-wasm/
