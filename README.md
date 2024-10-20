@@ -15,12 +15,21 @@ Platform: macOS ARM
 Default target: arm64-apple-darwin22.4.0
 ```
 
-Steps to generate `mnist.js` and `mnist.wasm`:
+Steps:
 
-```console
+Generate `classifier.o`:
+
+```bash
 lfortran -c classifier.f90 --generate-object-code --rtlib --target=wasm32-unknown-emscripten
+```
+Generate `mnist.js` and `mnist.wasm`:
+```bash
+# Substitute path-to-lfortran-runtime-library
 
-emcc --target=wasm32-unknown-emscripten -sSTACK_SIZE=50mb -sINITIAL_MEMORY=256mb -o www/mnist.js classifier.o <path-to-lfortran-runtime-library>/lfortran_runtime_wasm_emcc.o --no-entry -sEXPORTED_FUNCTIONS=_classifier,_malloc,_free
+emcc --target=wasm32-unknown-emscripten -sSTACK_SIZE=50mb \
+ -sINITIAL_MEMORY=256mb -o www/mnist.js classifier.o \
+ <path-to-lfortran-runtime-library>/lfortran_runtime_wasm_emcc.o \
+ --no-entry -sEXPORTED_FUNCTIONS=_classifier,_malloc,_free
 ```
 
 # Interactive Website
